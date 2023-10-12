@@ -1,9 +1,6 @@
 package com.example.carsharing.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -22,5 +19,7 @@ public class Car {
     private String mark;
     private String model;
     private double motorCapacity;
+
+    @Enumerated(EnumType.STRING)
     private Fuel fuel;
 }

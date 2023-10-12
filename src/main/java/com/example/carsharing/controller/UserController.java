@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void>CreateUser(@RequestBody UserDto userDto){
+    public ResponseEntity<Void>createUser(@RequestBody UserDto userDto){
         log.info("Saving user...");
         User user = userMapper.mapUserDtoToUser(userDto);
         dBService.saveUser(user);
@@ -60,8 +60,8 @@ public class UserController {
         log.info("Editing User with id="+id);
         User updatedUser = userMapper.mapUserDtoToUser(userDto);
         User savedUser = dBService.updateUser(id, updatedUser);
+        log.info("User with id="+id+" successfully updated!");
         return ResponseEntity.ok(userMapper.mapUserToUserDto(savedUser));
-
     }
 
 }

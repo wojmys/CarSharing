@@ -1,6 +1,6 @@
 package com.example.carsharing.repository;
 
-import com.example.carsharing.domain.User;
+import com.example.carsharing.domain.Car;
 import jakarta.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 @Transactional
-public interface UserRepository extends CrudRepository<User, Long> {
+@Repository
+public interface CarRepository extends CrudRepository<Car, Long > {
 
-    List<User> findAll();
-    Optional<User> findById(Long id);
+    List<Car> findAll();
+    Optional<Car> findById(Long id);
     void deleteById(Long id);
 }
