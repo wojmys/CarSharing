@@ -1,13 +1,9 @@
 package com.example.carsharing.service;
 
 import com.example.carsharing.domain.Car;
-import com.example.carsharing.domain.User;
 import com.example.carsharing.error.car.CarNotFoundException;
-import com.example.carsharing.error.user.UserNotFoundException;
 import com.example.carsharing.repository.CarRepository;
-import com.example.carsharing.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

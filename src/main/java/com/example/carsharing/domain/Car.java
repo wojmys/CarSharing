@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -22,4 +25,11 @@ public class Car {
 
     @Enumerated(EnumType.STRING)
     private Fuel fuel;
+    @OneToMany(
+            targetEntity = Borrow.class,
+            mappedBy = "car",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Borrow> borrowList = new ArrayList<>();
 }

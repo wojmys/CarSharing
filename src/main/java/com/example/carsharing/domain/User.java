@@ -1,11 +1,11 @@
 package com.example.carsharing.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +21,13 @@ public class User {
     private Long id;
     private String name;
     private boolean isTopCustomer;
+    @OneToMany(
+            targetEntity = Borrow.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Borrow> borrowList = new ArrayList<>();
 
 
 }
