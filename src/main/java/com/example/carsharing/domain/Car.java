@@ -26,10 +26,11 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private Fuel fuel;
     @OneToMany(
-            targetEntity = Borrow.class,
+            targetEntity = Rent.class,
             mappedBy = "car",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    public List<Borrow> borrowList = new ArrayList<>();
+    @Builder.Default
+    private List<Rent> rentList = new ArrayList<>();
 }

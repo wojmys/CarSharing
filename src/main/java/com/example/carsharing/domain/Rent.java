@@ -2,6 +2,7 @@ package com.example.carsharing.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
 
@@ -11,9 +12,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Borrow {
+public class Rent {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -28,8 +30,8 @@ public class Borrow {
     private LocalDate returnDate;
     private double distanceTravelledInKm;
     private double totalFuelCost;
+    @Enumerated(EnumType.STRING)
     private Status status;
-
 
     private double checkFuelFee() {
         double result=0;
@@ -42,13 +44,11 @@ public class Borrow {
         return result;
     }
 
-    public void calculateTotalFuelCost(Fuel fuelType) {
+    public double calculateTotalFuelCost() {
         double fuelFee = checkFuelFee();
         if (this.distanceTravelledInKm == 0) {
-            setTotalFuelCost(0);
-        } else {
-            setTotalFuelCost(fuelFee * totalFuelCost);
-        }
+            return 0;
+        } return fuelFee*distanceTravelledInKm;
     }
 
 }

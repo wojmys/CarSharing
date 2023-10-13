@@ -2,6 +2,9 @@ package com.example.carsharing.mapper;
 
 import com.example.carsharing.domain.Car;
 import com.example.carsharing.domain.CarDto;
+import com.example.carsharing.domain.Rent;
+import com.example.carsharing.service.RentDbService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +13,9 @@ import java.util.stream.Collectors;
 @Service
 public class CarMapper {
 
+    @Autowired
+    private RentDbService rentDbService;
+
     public Car mapCarDtoToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
@@ -17,6 +23,13 @@ public class CarMapper {
                 .mark(carDto.getMark())
                 .motorCapacity(carDto.getMotorCapacity())
                 .fuel(carDto.getFuel())
+                .rentList(carDto.getRentIds().stream()
+                        .map(rentId -> {
+                            Rent rent = new Rent();
+                            rent.setId(rentId);
+                            return rent;
+                        })
+                        .collect(Collectors.toList()))
                 .build();
     }
 

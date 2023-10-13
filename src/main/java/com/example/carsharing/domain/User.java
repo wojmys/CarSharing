@@ -22,12 +22,11 @@ public class User {
     private String name;
     private boolean isTopCustomer;
     @OneToMany(
-            targetEntity = Borrow.class,
+            targetEntity = Rent.class,
             mappedBy = "user",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    public List<Borrow> borrowList = new ArrayList<>();
-
-
+    @Builder.Default
+    private List<Rent> rentList = new ArrayList<>();
 }
