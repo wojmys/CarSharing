@@ -27,6 +27,9 @@ public class RentDbService {
     }
 
     public void deleteRent(Long id) {
+        if (!rentRepository.existsById(id)) {
+            throw new RentNotFoundException(id);
+        }
         rentRepository.deleteById(id);
     }
 

@@ -28,6 +28,9 @@ public class CarDbService {
     }
 
     public void deleteCar(Long id) {
+        if (!carRepository.existsById(id)) {
+            throw new CarNotFoundException(id);
+        }
         carRepository.deleteById(id);
     }
 
