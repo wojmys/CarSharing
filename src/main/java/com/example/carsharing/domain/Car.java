@@ -2,8 +2,9 @@ package com.example.carsharing.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.ColumnDefault;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class Car {
     private String mark;
     private String model;
     private double motorCapacity;
+    @Enumerated(EnumType.STRING)
+    private Status status=Status.AVAILABLE;
 
     @Enumerated(EnumType.STRING)
     private Fuel fuel;

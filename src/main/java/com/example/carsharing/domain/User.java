@@ -1,8 +1,8 @@
 package com.example.carsharing.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

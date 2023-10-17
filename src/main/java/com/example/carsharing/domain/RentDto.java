@@ -18,5 +18,4 @@ public class RentDto {
     private LocalDate returnDate;
     private double distanceTravelledInKm;
     private double totalFuelCost;
-    private Status status;
 }

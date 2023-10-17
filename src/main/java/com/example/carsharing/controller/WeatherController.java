@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @CrossOrigin("*")
 @RequestMapping("/weather")
 public class WeatherController {
+
     @Autowired
     private WeatherClient weatherClient;
 

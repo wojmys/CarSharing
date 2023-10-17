@@ -19,10 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private UserDbService dBService;
+    private final UserMapper userMapper;
+    private final UserDbService dBService;
 
     @GetMapping
     public ResponseEntity<List<UserDto>> fetchAllUsers() {

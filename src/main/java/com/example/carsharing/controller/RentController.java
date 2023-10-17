@@ -1,6 +1,7 @@
 package com.example.carsharing.controller;
 
 
+import com.example.carsharing.domain.CarDto;
 import com.example.carsharing.domain.Rent;
 import com.example.carsharing.domain.RentDto;
 import com.example.carsharing.mapper.RentMapper;
@@ -22,14 +23,11 @@ import java.util.List;
 @RequestMapping("/api/rents")
 public class RentController {
 
-    @Autowired
-    private CarDbService carDbService;
-    @Autowired
-    private UserDbService userDbService;
-    @Autowired
-    private RentMapper rentMapper;
-    @Autowired
-    private RentDbService rentDbService;
+
+//    private final CarDbService carDbService;
+//    private final UserDbService userDbService;
+    private final RentMapper rentMapper;
+    private final RentDbService rentDbService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

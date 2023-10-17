@@ -1,7 +1,7 @@
 package com.example.carsharing.service;
 
 import com.example.carsharing.domain.Rent;
-import com.example.carsharing.error.borrow.RentNotFoundException;
+import com.example.carsharing.error.rent.RentNotFoundException;
 import com.example.carsharing.repository.RentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,9 +35,8 @@ public class RentDbService {
 
         existingRent.setUser(updatedRent.getUser());
         existingRent.setCar(updatedRent.getCar());
-        existingRent.setBorrowDate(updatedRent.getBorrowDate());
+        existingRent.setRentDate(updatedRent.getRentDate());
         existingRent.setReturnDate(updatedRent.getReturnDate());
-        existingRent.setStatus(updatedRent.getStatus());
         existingRent.setDistanceTravelledInKm(updatedRent.getDistanceTravelledInKm());
         existingRent.setTotalFuelCost(updatedRent.getTotalFuelCost());
 

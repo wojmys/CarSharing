@@ -38,6 +38,7 @@ public class CarDbService {
         existingCar.setModel(updatedCar.getModel());
         existingCar.setMotorCapacity(updatedCar.getMotorCapacity());
         existingCar.setFuel(updatedCar.getFuel());
+        existingCar.setStatus(updatedCar.getStatus());
 
         return saveCar(existingCar);
     }

@@ -1,4 +1,4 @@
-package com.example.carsharing.error.borrow;
+package com.example.carsharing.error.rent;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

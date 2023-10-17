@@ -23,6 +23,7 @@ public class CarMapper {
                 .mark(carDto.getMark())
                 .motorCapacity(carDto.getMotorCapacity())
                 .fuel(carDto.getFuel())
+                .status(carDto.getStatus())
                 .rentList(carDto.getRentIds().stream()
                         .map(rentId -> {
                             Rent rent = new Rent();
@@ -40,6 +41,7 @@ public class CarMapper {
                 .model(car.getModel())
                 .motorCapacity(car.getMotorCapacity())
                 .fuel(car.getFuel())
+                .status(car.getStatus())
                 .build();
     }
 

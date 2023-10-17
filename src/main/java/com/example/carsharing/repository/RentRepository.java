@@ -11,9 +11,8 @@ import java.util.Optional;
 @Transactional
 @Repository
 public interface RentRepository extends CrudRepository<Rent, Long> {
+
     List<Rent> findAll();
     Optional<Rent> findById(Long id);
     void deleteById(Long id);
-
-
 }

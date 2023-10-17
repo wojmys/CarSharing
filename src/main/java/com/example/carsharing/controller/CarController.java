@@ -21,10 +21,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CarController {
 
-    @Autowired
-    private CarMapper carMapper;
-    @Autowired
-    private CarDbService carDbService;
+    private final CarMapper carMapper;
+    private final CarDbService carDbService;
 
     @GetMapping
     public ResponseEntity<List<CarDto>>fetchAllCars(){
