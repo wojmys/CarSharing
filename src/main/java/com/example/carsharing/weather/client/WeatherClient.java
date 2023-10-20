@@ -23,18 +23,18 @@ public class WeatherClient {
     @Value("${open.meteo.api.prod}")
     private String weatherApiEndpoint;
 
-
-    public List<WeatherDto> getWeather() {
-        URI url = UriComponentsBuilder.fromHttpUrl(weatherApiEndpoint)
-                .queryParam("current", "time,temperature_2m")
-                .build()
-                .encode()
-                .toUri();
-
-        WeatherDto[] weatherResponse = restTemplate.getForObject(url, WeatherDto[].class);
-
-        return Optional.ofNullable(weatherResponse)
-                .map(Arrays::asList)
-                .orElse(Collections.emptyList());
-    }
+// second implement option
+//    public List<WeatherDto> getWeather() {
+//        URI url = UriComponentsBuilder.fromHttpUrl(weatherApiEndpoint)
+//                .queryParam("current", "time,temperature_2m")
+//                .build()
+//                .encode()
+//                .toUri();
+//
+//        WeatherDto[] weatherResponse = restTemplate.getForObject(url, WeatherDto[].class);
+//
+//        return Optional.ofNullable(weatherResponse)
+//                .map(Arrays::asList)
+//                .orElse(Collections.emptyList());
+//    }
 }
