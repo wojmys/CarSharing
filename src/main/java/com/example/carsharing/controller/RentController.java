@@ -4,6 +4,7 @@ package com.example.carsharing.controller;
 import com.example.carsharing.domain.CarDto;
 import com.example.carsharing.domain.Rent;
 import com.example.carsharing.domain.RentDto;
+import com.example.carsharing.domain.User;
 import com.example.carsharing.mapper.RentMapper;
 import com.example.carsharing.service.CarDbService;
 import com.example.carsharing.service.RentDbService;
@@ -68,13 +69,15 @@ public class RentController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{rentId}")
+    @PatchMapping("/{rentId}")
     public ResponseEntity<RentDto> updateRent(@PathVariable Long rentId, @RequestBody RentDto updatedRentDto) {
         log.info("Updating Rent with id="+rentId);
-        Rent updatedRent = rentMapper.mapRentDtoToRent(updatedRentDto);
-        Rent savedRent = rentDbService.updateRent(rentId, updatedRent);
+        Rent rent = rentDbService.getRentById(rentId);
+        rent.setDistanceTravelledInKm(updatedRentDto.getDistanceTravelledInKm());
+        rentDbService.saveRent(rent);
         log.info("successfully updated!");
-        return ResponseEntity.ok(rentMapper.mapRentToRentDto(savedRent));
+        return ResponseEntity.ok().build();
     }
+
 
 }
