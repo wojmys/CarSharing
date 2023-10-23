@@ -17,7 +17,6 @@ import java.util.List;
 public class Car {
 
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String mark;

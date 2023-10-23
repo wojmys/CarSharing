@@ -46,4 +46,12 @@ public class RentDbService {
         return saveRent(existingRent);
     }
 
+    public boolean isAvailable(Rent rent){
+        Long carId = rent.getCar().getId();
+        if(rentRepository.countRentsInDateRangeForCar(rent.getRentDate(),rent.getReturnDate(),rent.getCar().getId())>0){
+            return false;
+        }
+        return true;
+    }
+
 }

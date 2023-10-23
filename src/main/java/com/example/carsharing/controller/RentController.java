@@ -1,17 +1,12 @@
 package com.example.carsharing.controller;
 
-
-import com.example.carsharing.domain.CarDto;
 import com.example.carsharing.domain.Rent;
 import com.example.carsharing.domain.RentDto;
-import com.example.carsharing.domain.User;
+import com.example.carsharing.error.rent.CarNotAvailableException;
 import com.example.carsharing.mapper.RentMapper;
-import com.example.carsharing.service.CarDbService;
 import com.example.carsharing.service.RentDbService;
-import com.example.carsharing.service.UserDbService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,15 +19,16 @@ import java.util.List;
 @RequestMapping("/api/rents")
 public class RentController {
 
-
-//    private final CarDbService carDbService;
-//    private final UserDbService userDbService;
     private final RentMapper rentMapper;
     private final RentDbService rentDbService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> rentCar(@RequestBody RentDto rentDto) {
+        log.info("Checking if available...");
+       if (!rentDbService.isAvailable(rentMapper.mapRentDtoToRent(rentDto))){
+           throw new CarNotAvailableException();
+       };
         log.info("Booking car...");
         rentDbService.saveRent(rentMapper.mapRentDtoToRent(rentDto));
         log.info("Successfully booked!");
