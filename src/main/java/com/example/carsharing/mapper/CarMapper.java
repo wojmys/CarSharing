@@ -13,9 +13,6 @@ import java.util.stream.Collectors;
 @Service
 public class CarMapper {
 
-    @Autowired
-    private RentDbService rentDbService;
-
     public Car mapCarDtoToCar(CarDto carDto) {
         return Car.builder()
                 .id(carDto.getId())
@@ -49,7 +46,5 @@ public class CarMapper {
         return cars.stream()
                 .map(this::mapCarToCarDto)
                 .collect(Collectors.toList());
-
     }
-
 }

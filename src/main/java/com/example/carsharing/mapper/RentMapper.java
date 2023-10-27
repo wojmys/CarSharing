@@ -32,7 +32,6 @@ public class RentMapper {
                 .build();
 
     }
-
     public Rent mapRentDtoToRent(RentDto rentDto) {
         return Rent.builder()
                 .id(rentDto.getId())
@@ -45,7 +44,6 @@ public class RentMapper {
 
                 .build();
     }
-
     public List<RentDto> mapToRentDtoList(List<Rent> rentList) {
         return rentList.stream()
                 .map(this::mapRentToRentDto)
