@@ -74,6 +74,4 @@ public class RentController {
         log.info("successfully updated!");
         return ResponseEntity.ok().build();
     }
-
-
 }

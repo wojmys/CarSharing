@@ -1,9 +1,7 @@
 package com.example.carsharing.mapper;
 
-import com.example.carsharing.domain.Car;
 import com.example.carsharing.domain.Rent;
 import com.example.carsharing.domain.RentDto;
-import com.example.carsharing.domain.User;
 import com.example.carsharing.service.CarDbService;
 import com.example.carsharing.service.UserDbService;
 import lombok.AllArgsConstructor;
